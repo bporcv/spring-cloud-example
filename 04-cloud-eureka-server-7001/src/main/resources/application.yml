@@ -1,0 +1,26 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: cloud-eureka
+eureka:
+  instance:
+    # 以ip显示，会出现在鼠标停在注册服务上是，桌面右下角显示ip和端口
+    prefer-ip-address: true
+    # 服务中心删除此服务实例的等待时间(秒为单位),时间间隔为最后一次服务中心接受到的心跳时间
+    lease-expiration-duration-in-seconds: 90
+    # 该实例给服务中心发送心跳的间隔时间，用于表明该服务实例可用
+    lease-renewal-interval-in-seconds: 30
+    #eureka 服务端实例名称
+    hostname: localhost
+  server:
+    # 关闭eureka的自我保护机制
+    enable-self-preservation: false
+  client:
+    #false 表示不向注册中心中注册自己
+    register-with-eureka: false
+    #false 表示自己端就是注册中心,我的职责就是维护服务实例，并不需要去检索服务
+    fetch-registry: true
+    service-url:
+      #设置与 Eureka Server 交互的地址查询服务和注册服务都需要依赖这个地址(服务暴露的地址)
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

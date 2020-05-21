@@ -1,0 +1,16 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: cloud-eureka
+eureka:
+  instance:
+    # 以ip显示，会出现在鼠标停在注册服务上是，桌面右下角显示ip和端口
+    prefer-ip-address: true
+    # 服务中心删除此服务实例的等待时间(秒为单位),时间间隔为最后一次服务中心接受到的心跳时间
+    lease-expiration-duration-in-seconds: 90
+    # 该实例给服务中心发送心跳的间隔时间，用于表明该服务实例可用
+    lease-renewal-interval-in-seconds: 30
+  server:
+    # 关闭eureka的自我保护机制
+    enable-self-preservation: false
